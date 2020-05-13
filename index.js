@@ -86,15 +86,30 @@ class Car {
       this.tank += gallons;
    }
    drive(distance){
-            //console.log("DISTANCE=" + distance);
+
+   //==============================================
+   console.log(`\nTHE DISTANCE IS = ${distance}`);
+   console.log(`THE THE TANK IS  = ${this.tank}`);
+   console.log( `(Math.round(${distance} / ${this.milesPerGallon})`); 
+   //==============================================
+
+   // IF THE DISTANCE ENTERED IS GREATER THAN THE AMOUNT OF
+   // GAS IN YOUR TANK * BY MPG  - THE DISTANCE
+   // STOPS WHEN THE TANK IS EMPTY
+
+   if( distance > Math.floor( this.tank * this.milesPerGallon )){
+      this.odometer += Math.round(this.tank * this.milesPerGallon);
+   }else{
       this.odometer += distance;
-            //console.log("this.odometer= " + this.odometer);
-      this.tank -= ( Math.round(distance / this.milesPerGallon) ) ;
-            //console.log( `this.tank = ${this.tank} | round(distance ${distance} /mpg ${this.milesPerGallon}`);
-      if(this.tank <= 0){
-            //console.log( `I ran out of fuel at ${this.odometer} miles!` );
-         return `I ran out of fuel at ${this.odometer} miles!`;
-       }
+   }
+   this.tank -= ( Math.round(distance / this.milesPerGallon) ) ;
+
+   //==============================================
+   console.log(`I ran out of fuel at ${this.odometer} miles!`);
+   console.log("============================");
+   //==============================================
+
+   return `I ran out of fuel at ${this.odometer} miles!`;
    }
 }
 
